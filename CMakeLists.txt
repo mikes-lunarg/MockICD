@@ -23,6 +23,7 @@ if(WIN32)
         "${CMAKE_CURRENT_BINARY_DIR}/$<CONFIGURATION>/mock_icd.json"
         )
 else()
+    add_definitions(-DVK_USE_PLATFORM_XCB_KHR)
     add_custom_command(TARGET mock_icd POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
         "${CMAKE_CURRENT_SOURCE_DIR}/mock_icd_linux.json"

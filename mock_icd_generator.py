@@ -266,7 +266,8 @@ class CmdInfo:
                 param_decl = ''.join(param.itertext())
                 param_name = param.find('name').text
                 param_type = param.find('type').text
-                if '*' in param_decl and 'const' not in param_decl and param_type != 'void':
+                type_blacklist = ('void', 'xcb_connection_t')
+                if '*' in param_decl and 'const' not in param_decl and param_type not in type_blacklist:
                     self.z_list.append((param_name, param_type))
              
 
